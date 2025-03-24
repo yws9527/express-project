@@ -1,0 +1,1176 @@
+{
+	"info": {
+		"_postman_id": "2ef10b4d-6c14-486b-9167-aa683e90f110",
+		"name": "测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18647294"
+	},
+	"item": [
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "yaoyao",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "13245678906",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "120@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登录",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const res = pm.response.json();",
+									"pm.environment.set('token', res.token);",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "132@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新用户信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "channelDes",
+									"value": "momo的频道",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上传图片",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "headImg",
+									"type": "file",
+									"src": "/Users/net/Desktop/守望先锋臀2k.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/headImg",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"headImg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "请求图片",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/859e671fc234dcdbfe8e60fe436d2da6.jpg",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"859e671fc234dcdbfe8e60fe436d2da6.jpg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加订阅",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "132@qq.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/subscribe/67d055952252ea86e3422d7b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"subscribe",
+								"67d055952252ea86e3422d7b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消订阅",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "132@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/subscribe/67d05db720cbc0d71827f445",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"subscribe",
+								"67d05db720cbc0d71827f445"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "订阅详情",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "132@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/getUser/67d05db720cbc0d71827f445",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"getUser",
+								"67d05db720cbc0d71827f445"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "订阅列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "132@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/getSubscribe/67d055952252ea86e3422d7b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"getSubscribe",
+								"67d055952252ea86e3422d7b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "粉丝列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "132@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "333333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/user/getChannel?page=1&pageSize=100",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"getChannel"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "视频",
+			"item": [
+				{
+					"name": "视频入库",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "测试视频1",
+									"type": "text"
+								},
+								{
+									"key": "vodVideoId",
+									"value": "48957431-2d77-4dc1-a76b-71df2e9da722",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": "1233333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/createVideo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"createVideo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "视频列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/videoList?pageSize=12&page=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"videoList"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "12"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "视频详情",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/67d3b99672910ce1a4bbf5f2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"67d3b99672910ce1a4bbf5f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "评论",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "来自momo的评论1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/comment/67d3b99672910ce1a4bbf5f2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"comment",
+								"67d3b99672910ce1a4bbf5f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除评论",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "来自momo的评论1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/comment/67d3b99672910ce1a4bbf5f2/67d424029320de91f2564a19",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"comment",
+								"67d3b99672910ce1a4bbf5f2",
+								"67d424029320de91f2564a19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "评论列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "来自momo的评论1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/commentList/67d3b99672910ce1a4bbf5f2?page=1&pageSize=15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"commentList",
+								"67d3b99672910ce1a4bbf5f2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "喜欢视频",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "like",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/like/67d3b99672910ce1a4bbf5f2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"like",
+								"67d3b99672910ce1a4bbf5f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "不喜欢视频",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Ba eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3ZlciI6bnVsbCwiY2hhbm5lbERlcyI6bnVsbCwiX2lkIjoiNjdjZWIwMzhhMTVhYTdlYjNjOTdjMjUwIiwidXNlcm5hbWUiOiJtb21vIiwiZW1haWwiOiIxMzNAcXEuY29tIiwiaW1hZ2UiOm51bGwsInBob25lIjoiMTMyNDU2Nzg5MDkiLCJwYXNzd29yZCI6ImQ3OWE1ZjgyMTVkMmJmNzRiNzE2M2M4YTQzMjk0MGZmIiwiY3JlYXRlQXQiOiIyMDI1LTAzLTEwVDA5OjI2OjE2LjMzNFoiLCJ1cGRhdGVBdCI6IjIwMjUtMDMtMTBUMDk6MjY6MTYuMzM0WiIsIl9fdiI6MCwiaWF0IjoxNzQxNzA2Mzk2LCJleHAiOjE3NDE3OTI3OTZ9.ieV9EWFgg_ruiI2ffP7QyyBuBnQy7Oe-Ve0prTtNizE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "like",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/disLike/67d3b99672910ce1a4bbf5f2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"disLike",
+								"67d3b99672910ce1a4bbf5f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "喜欢视频列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/like/list?page=1&pageSize=6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"like",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新视频",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "测试视频11111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/update/67d3b99672910ce1a4bbf5f2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"update",
+								"67d3b99672910ce1a4bbf5f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除视频",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "测试视频11111",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/delete/67d3b99672910ce1a4bbf5f2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"delete",
+								"67d3b99672910ce1a4bbf5f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "视频收藏",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "测试视频1",
+									"type": "text"
+								},
+								{
+									"key": "vodVideoId",
+									"value": "48957431-2d77-4dc1-a76b-71df2e9da722",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": "1233333",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/createVideo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"createVideo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "视频热搜",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/video/getHots/10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"video",
+								"getHots",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
